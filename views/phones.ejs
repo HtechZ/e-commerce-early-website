@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZL Shop - Phones</title>
+    <link rel="shortcut icon" href="/images/ZL Shop Fav Icon.webp" type="image/x-icon">
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <div class="main-div">
+            <h1 class="main-h1">All phones</h1>
+            <div class="products-div">
+                <% allPhones.forEach(phone => { %>
+                    <div class="product-div">
+                        <h3><%= phone.name %></h3>
+                        <p><%= phone.about %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+</body>
+
+</html>

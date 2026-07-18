@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new product</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * {
+            background-color: #96DED1 !important;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/images/ZL Shop Fav Icon.webp" type="image/x-icon">
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+    <form id="form" class="new-product-form" action="/products" method="post">
+        <input type="text" name="name" id="name" placeholder="Enter products name">
+        <textarea type="text" name="about" id="about" rows="10" placeholder="Say about product..."></textarea>
+        <label for="category">Select a category for this product</label>
+        <!--         <select name="category" id="category" required>
+            <option value="phone">Phone</option>
+            <option value="computer">Computer</option>
+        </select> -->
+        <div class="option-div">
+            <button value="phone" name="phone" id="phone-option">Phone</button>
+            <button value="computer" name="computer" id="computer-option">Computer</button>
+        </div>
+        <input value="" type="hidden" id="hidden-input" name="category">
+        <button class="submit-btn" type="submit">Add product</button>
+    </form>
+
+
+    <script>
+        const hiddenInput = document.getElementById("hidden-input")
+        const phoneButton = document.getElementById("phone-option")
+        const computerButton = document.getElementById("computer-option")
+        phoneButton.addEventListener("click", (e) => {
+            e.preventDefault()
+            phoneButton.classList.add("button-active")
+            computerButton.classList.remove("button-active")
+            hiddenInput.value = phoneButton.value
+        })
+        computerButton.addEventListener("click", (e) => {
+            e.preventDefault()
+            computerButton.classList.add("button-active")
+            phoneButton.classList.remove("button-active")
+            hiddenInput.value = computerButton.value
+        })
+
+    </script>
+</body>
+
+</html>
