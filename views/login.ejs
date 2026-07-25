@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register you account</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <form id="form" class="new-product-form" action="/login" method="post">
+            <input type="text" name="username" id="username" placeholder="Enter your username">
+            <a id="a" class="a" href="/register">Have an account?</a>
+            <button class="submit-btn" type="submit">Login</button>
+    <script>
+        document.getElementById("form").addEventListener("submit", () => {
+            fetch("/admin/products/new", {
+                method: "post",
+                headers: {"content-type": "application/json"},
+                body: JSON.stringify({
+                    username: document.getElementById("username").value
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

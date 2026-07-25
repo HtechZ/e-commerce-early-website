@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register you account</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <form id="form" class="new-product-form" action="/register" method="post">
+            <input type="text" name="username" id="username" placeholder="Enter your username">
+            <input type="number" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number">
+            <a id="a" class="a" href="/login">Have an account?</a>
+            <button class="submit-btn" type="submit">Register</button>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+<!--     <div class="cart-items-div">
+        <% orders.forEach(order => { %>
+            <div class="cart-item"><p class="cart-item-p"><%= order %></p></div>
+        <% }) %>
+    </div> -->
+
+    <div class="cart-items-div">
+        <% orders.forEach(order => { %>
+            <div class="cart-item"><p class="cart-item-p"><%= order %></p> <!-- <p class="cart-item-counter">1</p> --></div>
+        <% }) %>
+</body>
+
+</html>

@@ -85,6 +85,24 @@
     position: absolute;
     bottom: 20px;
     left: 10px;
+    max-width: 350px;
+}
+
+.buyButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 40px;
+    width: 70px;
+    border-radius: 10px;
+    border: 2px solid black;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.buyButton:hover {
+    background-color: rgb(199, 199, 199);
 }
 
 .new-product-form {
@@ -159,10 +177,74 @@ textarea {
     border-radius: 10px;
 }
 
-
-
-@media screen and (max-width: 900px) {
-    .products-div {
-        grid-template-columns: 1fr 1fr;
-    }
+.cart-items-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
 }
+
+.cart-item {
+    display: flex;
+    background-color: bisque;
+    height: 70px;
+    width: 600px;
+    border-radius: 10px;
+}
+
+.cart-item-p {
+    margin: auto auto auto 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cart-item-counter {
+    margin: auto 25px auto auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.admin-dashboard-header {
+    justify-self: center;
+    margin-bottom: 50px;
+}
+
+.button-active {background-color: blue !important;
+    color: white !important;
+    transition: all 50ms linear;
+}
+
+.display-flex {
+    display: flex;
+}
+
+@media screen and (max-width: 960px) {
+.header-div {
+    flex-direction: column;
+    gap: 2px;
+}
+}
+@media screen and (max-width: 790px) {
+.header-div {
+    flex-direction: column;
+    gap: 2px;
+}
+.shortcuts-div{
+    gap: 25px;
+}
+}
+@media screen and (max-width: 605px) {
+.header-div {
+    flex-direction: column;
+    gap: 2px;
+}
+.shortcuts-div{
+    flex-direction: column;
+    gap: 2px;
+    font-size: 15px;
+}
+}
+
+
