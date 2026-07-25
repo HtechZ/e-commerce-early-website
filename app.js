@@ -14,7 +14,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-mongoose.connect("mongodb+srv://ps5hosseinhoss123_db_user:XtDP49Umgv0Ucdy2@first-cluster.jalwyoh.mongodb.net/?appName=First-Cluster")
+mongoose.connect("mongodb+srv://ps5hosseinhoss123_db_user:XtDP49Umgv0Ucdy2@first-cluster.jalwyoh.mongodb.net/ZLShop?retryWrites=true&w=majority&appName=First-Cluster")
 
 
 app.get("/", async (req, res) => {
