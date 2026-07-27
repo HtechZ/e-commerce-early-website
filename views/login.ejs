@@ -18,7 +18,8 @@
     <%- include("./partials/header") %>
         <form id="form" class="new-product-form" action="/login" method="post">
             <input type="text" name="username" id="username" placeholder="Enter your username">
-            <a id="a" class="a" href="/register">Have an account?</a>
+            <input type="text" name="password" id="password" placeholder="Enter your password">
+            <a id="a" class="a" href="/register">Don't have an account?</a>
             <button class="submit-btn" type="submit">Login</button>
     <script>
         document.getElementById("form").addEventListener("submit", () => {
@@ -26,7 +27,8 @@
                 method: "post",
                 headers: {"content-type": "application/json"},
                 body: JSON.stringify({
-                    username: document.getElementById("username").value
+                    username: document.getElementById("username").value,
+                    password: document.getElementById("password").value
                 })
             })
         })

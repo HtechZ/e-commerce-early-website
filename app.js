@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const multer = require("multer");
 const session = require("express-session");
 const userSchema = require("./models/userSchema")
 const productSchema = require("./models/productModel")
@@ -16,6 +17,18 @@ app.use(session({
 
 mongoose.connect("mongodb://localhost/ZLShop")
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/uploads")
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
+
+
 
 app.get("/", async (req, res) => {
     const allProducts = await productSchema.find()
@@ -31,9 +44,10 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async (req, res) => {
     const username = req.body.username.toLowerCase()
+    const password = req.body.password
     const phoneNumber = req.body.phoneNumber
     try {
-        const user = await userSchema.insertOne({ username: username, phone_number: phoneNumber })
+        const user = await userSchema.insertOne({ username: username, password: password, phone_number: phoneNumber })
         res.redirect("/")
     } catch {
         res.send(`
@@ -55,13 +69,14 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
     const username = req.body.username.toLowerCase()
-    const user = await userSchema.findOne({ username: username })
+    const password = req.body.password
+    const user = await userSchema.findOne({ username: username, password: password })
     if (!user) {
         res.send(`<h1>Your Username is incorrect</h1>
             <h2>If you doesn't have and account you can register</h2>
             <h2>You are going to be redirected to login page in 5 seconds</h2>
             <script>
-            settimeout(() => window.location.href("/login"), 5000)
+            setTimeout(() => window.location.href("/login"), 5000)
             </script>`)
     }
     req.session.userId = user._id;
@@ -74,20 +89,28 @@ app.get("/admin/products/new", auth, async (req, res) => {
         return res.redirect("/");
     } else {
         const allOrders = await userSchema.find({}, { _id: 0 });
-         res.render("new-product", {allOrders}); 
+        res.render("new-product", { allOrders });
 
 
-}});
-app.post("/products", async (req, res) => {
+    }
+});
+app.post("/products", upload.single("image"), async (req, res) => {
     const name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1).toLowerCase()
     const about = req.body.about
-    const category = req.body.category.charAt(0).toUpperCase() + req.body.category.slice(1)
+    const category = req.body.category
+    const link = req.body.link
+    const image = "/uploads/" + req.file.filename
     try {
-        await productSchema.insertOne({ name: name, about: about, category: category })
+        await productSchema.insertOne({ name: name, about: about, category: category, link: link, image: image })
         res.redirect("/admin/products/new")
     } catch (error) {
         res.send(`There is an error: ${error.message}`)
     }
+})
+
+app.get("/product/:link", async (req, res) => {
+    const product = await productSchema.findOne({ link: req.params.link })
+    res.render("product", { product: product })
 })
 
 app.get("/phones", async (req, res) => {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZLShop - <%= product.name %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+    <div class="product-name-image">
+        <h1><%= product.name %></h1>
+        <img src="<%= product.image %>" alt="">
+    </div>
+    <div class="product-about-info">
+        <div class="product-about-info-tags">
+        <p>About</p>
+        
+        <p>info</p>
+        </div>
+    </div>
+</body>
+
+</html>

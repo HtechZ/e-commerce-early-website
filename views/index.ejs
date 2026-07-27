@@ -19,6 +19,8 @@
 
 <body>
     <%- include("./partials/header") %>
+
+
         <form id="loginForm" class="new-product-form" action="/" method="post">
             <input type="text" name="loginUsername" id="loginUsername" placeholder="Enter your username">
             <button class="submit-btn" type="submit">Login</button>
@@ -28,12 +30,11 @@
             <div class="products-div">
                 <% allProducts.forEach(product=> { %>
                     <div class="product-div">
+                        <a href="/product/<%= product.link %>"><img src="<%- product.image %>" alt=""></a>
                         <h3>
                             <%= product.name %>
                         </h3>
-                        <p>
-                            <%= product.about %>
-                        </p>
+                        <div class="about-and-button">
                         <form action="/cart" method="post">
                             <input type="hidden" name="productName" value="<%= product.name %>">
                             <% if (!user) { %>
@@ -42,6 +43,7 @@
                             <button type="submit" id="buyButton" class="buyButton" name="buyButton">Buy</button>
                             <% } %>
                         </form>
+                        </div>
                     </div>
                     <% }) %>
             </div>
@@ -56,6 +58,10 @@
                     button.style.backgroundColor = "red"
                 })
             })
+
+            function goToProduct() {
+                window.location.href("")
+            }
         </script>
 </body>
 

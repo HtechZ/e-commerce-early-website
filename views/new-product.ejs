@@ -70,14 +70,12 @@
                 </div>
                 <% }) %>
         </div>
-        <form id="form" class="new-product-form" action="/products" method="post">
+        <form id="form" class="new-product-form" action="/products" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" id="image" placeholder="Upload product image">
             <input type="text" name="name" id="name" placeholder="Enter products name">
             <textarea type="text" name="about" id="about" rows="10" placeholder="Say about product..."></textarea>
+            <input type="text" name="link" id="link" placeholder="Enter link">
             <label for="category">Select a category for this product</label>
-            <!--         <select name="category" id="category" required>
-            <option value="phone">Phone</option>
-            <option value="computer">Computer</option>
-        </select> -->
             <div class="option-div">
                 <button value="phone" name="phone" id="phone-option">Phone</button>
                 <button value="computer" name="computer" id="computer-option">Computer</button>
