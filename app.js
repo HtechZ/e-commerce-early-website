@@ -15,7 +15,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-mongoose.connect("mongodb+srv://ps5hosseinhoss123_db_user:XtDP49Umgv0Ucdy2@first-cluster.jalwyoh.mongodb.net/ZLShop")
+mongoose.connect("mongodb+srv://suisuisui123g_db_user:Sf2CqoDdhCeix5U4@cluster0.domxj3h.mongodb.net/ZLShop")
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
